@@ -22,10 +22,10 @@ plt.show()
 import geopandas as gpd
 
 # Cargar un shapefile del mundo
-world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+world = gpd.read_file('ne_110m_admin_0_countries.shp')
 
 # Unir el shapefile con el dataframe del índice de democracia
-world = world.merge(df, how='left', left_on='name', right_on='Entity')
+world = world.merge(df, how='left', left_on='NAME', right_on='Entity')
 
 # Crear el mapa
 world.plot(column='democracy_eiu', legend=True,
